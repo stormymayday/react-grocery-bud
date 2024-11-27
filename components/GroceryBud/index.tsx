@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Form from "./Form";
 import ItemList from "./ItemList";
 import { ItemType } from "@/types";
@@ -20,7 +20,7 @@ const getLocalStorage = (): ItemType[] => {
 };
 
 function GroceryBud() {
-    const [items, setItems] = useState<ItemType[]>(getLocalStorage());
+    const [items, setItems] = useState<ItemType[]>([]);
 
     const addItem = (itemName: string): void => {
         const newItem: ItemType = {
@@ -39,9 +39,9 @@ function GroceryBud() {
         setLocalStorage(newItems);
     };
 
-    // useEffect(() => {
-    //     setItems(getLocalStorage());
-    // }, []);
+    useEffect(() => {
+        setItems(getLocalStorage());
+    }, []);
 
     return (
         <section className="section-center">
