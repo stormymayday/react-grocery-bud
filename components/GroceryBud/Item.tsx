@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { ItemType } from "@/types";
 
 interface ItemProps {
@@ -6,17 +9,31 @@ interface ItemProps {
 }
 
 function Item({ item, removeItem }: ItemProps) {
+    const [isChecked, setIsChecked] = useState<boolean>(item.completed);
+
     return (
-        <div>
-            <h4>{item.name}</h4>
+        <article className="single-item">
+            <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={() => setIsChecked(!isChecked)}
+            />
+            <p
+                style={{
+                    textDecoration: isChecked ? "line-through" : "none",
+                    textTransform: "capitalize",
+                }}
+            >
+                {item.name}
+            </p>
             <button
                 type="button"
-                className="btn"
+                className="btn remove-btn"
                 onClick={() => removeItem(item.id)}
             >
                 delete
             </button>
-        </div>
+        </article>
     );
 }
 export default Item;
