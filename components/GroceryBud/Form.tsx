@@ -1,21 +1,20 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 interface FormProps {
-    items: string[];
-    setItems: Dispatch<SetStateAction<string[]>>;
+    addItem: (itemName: string) => void;
 }
 
-function Form({ items, setItems }: FormProps) {
+function Form({ addItem }: FormProps) {
     const [newItemName, setNewItemName] = useState<string>("");
 
     return (
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                const newItems = [...items, newItemName];
-                setItems(newItems);
+                if (!newItemName) return;
+                addItem(newItemName);
                 setNewItemName("");
             }}
         >
