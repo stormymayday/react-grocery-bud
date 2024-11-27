@@ -5,19 +5,7 @@ import Form from "./Form";
 import ItemList from "./ItemList";
 import { ItemType } from "@/types";
 import { v4 as uuidv4 } from "uuid";
-
-const setLocalStorage = (items: ItemType[]) => {
-    localStorage.setItem("list", JSON.stringify(items));
-};
-
-const getLocalStorage = (): ItemType[] => {
-    const list = localStorage.getItem("list");
-    if (list) {
-        return JSON.parse(list);
-    } else {
-        return [];
-    }
-};
+import { setLocalStorage, getLocalStorage } from "./utils";
 
 function GroceryBud() {
     const [items, setItems] = useState<ItemType[]>([]);
