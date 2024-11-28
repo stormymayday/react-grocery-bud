@@ -1,11 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import Form from "./Form";
 import ItemList from "./ItemList";
 import { ItemType } from "@/types";
 import { v4 as uuidv4 } from "uuid";
 import { setLocalStorage, getLocalStorage } from "./utils";
+
+export const GroceryBudContext = createContext<{
+    items: ItemType[];
+    addItem: (itemName: string) => void;
+    removeItem: (itemId: string) => void;
+    editItem: (itemId: string) => void;
+}>({
+    items: [],
+    addItem: () => {},
+    removeItem: () => {},
+    editItem: () => {},
+});
 
 function GroceryBud() {
     const [items, setItems] = useState<ItemType[]>([]);
@@ -45,12 +57,12 @@ function GroceryBud() {
 
     return (
         <section className="section-center">
-            <Form addItem={addItem} />
-            <ItemList
-                items={items}
-                removeItem={removeItem}
-                editItem={editItem}
-            />
+            <GroceryBudContext.Provider
+                value={{ items, addItem, removeItem, editItem }}
+            >
+                <Form />
+                <ItemList />
+            </GroceryBudContext.Provider>
         </section>
     );
 }

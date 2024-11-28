@@ -1,14 +1,16 @@
 "use client";
 
+import { GroceryBudContext } from ".";
+import { useContext } from "react";
 import { ItemType } from "@/types";
 
 interface ItemProps {
     item: ItemType;
-    removeItem: (itemId: string) => void;
-    editItem: (itemId: string) => void;
 }
 
-function Item({ item, removeItem, editItem }: ItemProps) {
+function Item({ item }: ItemProps) {
+    const { removeItem, editItem } = useContext(GroceryBudContext);
+    // console.log(`Item`);
     return (
         <article className="single-item">
             <input

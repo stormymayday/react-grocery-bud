@@ -1,25 +1,17 @@
-import { ItemType } from "@/types";
 import Item from "./Item";
+import { GroceryBudContext } from ".";
+import { useContext } from "react";
 
-interface ItemListProps {
-    items: ItemType[];
-    removeItem: (itemId: string) => void;
-    editItem: (itemId: string) => void;
-}
+function ItemList() {
+    const { items } = useContext(GroceryBudContext);
 
-function ItemList({ items, removeItem, editItem }: ItemListProps) {
+    // console.log(`Item List`);
+
     return (
         <div className="items">
             {items.length > 0 &&
                 items.map((item) => {
-                    return (
-                        <Item
-                            key={item.id}
-                            item={item}
-                            removeItem={removeItem}
-                            editItem={editItem}
-                        />
-                    );
+                    return <Item key={item.id} item={item} />;
                 })}
         </div>
     );

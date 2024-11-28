@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GroceryBudContext } from ".";
 
-interface FormProps {
-    addItem: (itemName: string) => void;
-}
+function Form() {
+    const { addItem } = useContext(GroceryBudContext);
 
-function Form({ addItem }: FormProps) {
     const [newItemName, setNewItemName] = useState<string>("");
+
+    // console.log(`Form`);
 
     return (
         <form
