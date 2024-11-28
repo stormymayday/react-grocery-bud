@@ -1,9 +1,9 @@
 "use client";
 
-import Form from "./Form";
-import ItemList from "./ItemList";
+import Form from "@/components/GroceryBud/Form";
+import ItemList from "@/components/GroceryBud/ItemList";
 
-import { GroceryBudContextProvider } from "./context/GroceryBudContext";
+import { GroceryBudContextProvider } from "@/components/GroceryBud/context/GroceryBudContext";
 
 function GroceryBud() {
     return (

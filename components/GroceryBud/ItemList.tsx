@@ -1,4 +1,4 @@
-import Item from "./Item";
+import Item from "@/components/GroceryBud/Item";
 import { useContext } from "react";
 import { GroceryBudContext } from "@/components/GroceryBud/context/GroceryBudContext";
 
