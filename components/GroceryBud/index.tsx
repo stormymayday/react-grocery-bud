@@ -10,6 +10,10 @@ import { setLocalStorage, getLocalStorage } from "./utils";
 function GroceryBud() {
     const [items, setItems] = useState<ItemType[]>([]);
 
+    useEffect(() => {
+        setItems(getLocalStorage());
+    }, []);
+
     const addItem = (itemName: string): void => {
         const newItem: ItemType = {
             id: uuidv4(),
@@ -27,14 +31,26 @@ function GroceryBud() {
         setLocalStorage(newItems);
     };
 
-    useEffect(() => {
-        setItems(getLocalStorage());
-    }, []);
+    const editItem = (itemId: string): void => {
+        const newItems = items.map((item) => {
+            if (item.id === itemId) {
+                const newItem = { ...item, completed: !item.completed };
+                return newItem;
+            }
+            return item;
+        });
+        setItems(newItems);
+        setLocalStorage(newItems);
+    };
 
     return (
         <section className="section-center">
             <Form addItem={addItem} />
-            <ItemList items={items} removeItem={removeItem} />
+            <ItemList
+                items={items}
+                removeItem={removeItem}
+                editItem={editItem}
+            />
         </section>
     );
 }

@@ -6,21 +6,20 @@ import { ItemType } from "@/types";
 interface ItemProps {
     item: ItemType;
     removeItem: (itemId: string) => void;
+    editItem: (itemId: string) => void;
 }
 
-function Item({ item, removeItem }: ItemProps) {
-    const [isChecked, setIsChecked] = useState<boolean>(item.completed);
-
+function Item({ item, removeItem, editItem }: ItemProps) {
     return (
         <article className="single-item">
             <input
                 type="checkbox"
-                checked={isChecked}
-                onChange={() => setIsChecked(!isChecked)}
+                checked={item.completed}
+                onChange={() => editItem(item.id)}
             />
             <p
                 style={{
-                    textDecoration: isChecked ? "line-through" : "none",
+                    textDecoration: item.completed ? "line-through" : "none",
                     textTransform: "capitalize",
                 }}
             >

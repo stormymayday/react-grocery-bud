@@ -4,9 +4,10 @@ import Item from "./Item";
 interface ItemListProps {
     items: ItemType[];
     removeItem: (itemId: string) => void;
+    editItem: (itemId: string) => void;
 }
 
-function ItemList({ items, removeItem }: ItemListProps) {
+function ItemList({ items, removeItem, editItem }: ItemListProps) {
     return (
         <div className="items">
             {items.length > 0 &&
@@ -16,6 +17,7 @@ function ItemList({ items, removeItem }: ItemListProps) {
                             key={item.id}
                             item={item}
                             removeItem={removeItem}
+                            editItem={editItem}
                         />
                     );
                 })}
