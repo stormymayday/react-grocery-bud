@@ -1,7 +1,7 @@
 "use client";
 
-import { GroceryBudContext } from ".";
 import { useContext } from "react";
+import { GroceryBudContext } from "@/components/GroceryBud/context/GroceryBudContext";
 import { ItemType } from "@/types";
 
 interface ItemProps {

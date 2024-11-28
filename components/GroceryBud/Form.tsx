@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { GroceryBudContext } from ".";
+import { GroceryBudContext } from "@/components/GroceryBud/context/GroceryBudContext";
 
 function Form() {
     const { addItem } = useContext(GroceryBudContext);

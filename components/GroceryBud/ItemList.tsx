@@ -1,6 +1,6 @@
 import Item from "./Item";
-import { GroceryBudContext } from ".";
 import { useContext } from "react";
+import { GroceryBudContext } from "@/components/GroceryBud/context/GroceryBudContext";
 
 function ItemList() {
     const { items } = useContext(GroceryBudContext);
