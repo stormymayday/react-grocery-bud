@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { ItemType } from "@/types";
 
 interface ItemProps {
